@@ -1,0 +1,10 @@
+:root {
+  --vermelho: #FF3131;
+}
+
+.App {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  background-color: #ffffff;
+}

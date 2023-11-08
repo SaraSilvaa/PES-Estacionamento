@@ -1,0 +1,362 @@
+body{
+    background-color: white;
+}
+
+.app {
+    background-color: #004687;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+  }
+  
+  .title{
+    color: #004687;
+    margin-right: 15px;
+  }
+
+
+
+
+  
+
+  
+
+
+  .FormInput label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 16px;
+    font-weight:bolder;
+  }
+ /* ... Outras definições de estilo ... */
+
+.FormCadastro {
+    display: flex;
+    flex-wrap: wrap; /* Permite que os elementos quebrem para a próxima linha quando não couberem na largura da tela */
+    justify-content: space-between; /* Distribui os elementos horizontalmente */
+    margin-left: 10%;
+    margin-top: 10%;
+}
+/* ... Outras definições de estilo ... */
+
+.Pesquisa {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .Pesquisa input {
+    flex: 1;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 15px;
+    margin-left: 10px;
+  }
+  
+  .IconeLupa {
+    width: 25px;
+    height: 30px;
+    margin-left: 10px;
+    cursor: pointer;
+  }
+  
+  .Tabela {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .Tabela th, .Tabela td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: center;
+  }
+  
+  /* ... Outras definições de estilo ... */
+  
+
+.FormInput {
+    flex: 0 0 calc(45% - 10px); /* Define o tamanho para 45% da largura da coluna (2 colunas) */
+    margin-bottom: 15px;
+}
+
+/* ... Outras definições de estilo ... */
+
+  
+ 
+  
+  /* Estilo para os campos de entrada */
+  
+  /* Estilo para o botão de envio */
+  .EnviarCadastro {
+    padding: 10px 20px;
+    margin: 10px 0;
+    background-color: #004687;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  
+  
+  @keyframes slideIn {
+    from {
+      transform: translateX(100%);
+    }
+    to {
+      transform: translateX(0);
+    }
+  }
+  
+  .Navbar-Lateral button {
+    display: block;
+    height: 62px;
+    width: 90%;
+    margin: 50px auto 10px auto;
+    border-radius: 25px;
+    border: 1px solid #004687;
+    background-color: #ffffff;
+    cursor: pointer;
+    font-size: 24px;
+    color: #004687;
+    text-decoration: none;
+}
+  .botoes{
+    display: block;
+    height: 62px;
+    width: 90%;
+    margin: 20px auto;
+    border-radius: 5px;
+    background-color: rgba(204, 204, 204, 0.5);
+    font-size: 24px;
+    padding-left: 13px;
+    color: #fff;
+  }
+  .header {
+    background-color: #004687;
+    height: 45px;
+    
+  }
+  .Navbar-Lateral {
+    position: fixed;
+    left: 0;
+    top: 20;
+    width: 20%;
+    height: 100%;
+    background: linear-gradient(to bottom, #004687, #9da4af); /* Gradiente de cima para baixo */
+    overflow: hidden; /* Adicionando uma barra de rolagem se o conteúdo for maior do que a altura */
+    padding: 20px; /* Adicionando um espaço interno para afastar o conteúdo da borda */
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2); /* Adicionando uma sombra para destacar a barra lateral */
+  }
+  
+  /* Estilizando os links na barra de navegação */
+  .Navbar-Lateral a {
+    display: block;
+    padding: 10px;
+    text-decoration: none;
+    color: #fff;
+    transition: background-color 0.3s;
+  }
+  
+  .Navbar-Lateral a:hover {
+    background-color: #007bff; /* Mudando a cor de fundo ao passar o mouse sobre os links */
+  }
+  
+  /* Responsividade para dispositivos menores */
+  @media (max-width: 768px) {
+    .Navbar-Lateral {
+      width: 80px; /* Reduzindo a largura para dispositivos menores */
+    }
+  
+    .Navbar-Lateral a {
+      padding: 5px; /* Reduzindo o espaço entre os links */
+    }
+  }
+  
+  .Card-principal{
+    position: absolute;
+    left: 62%;
+    top: 55vh;
+    transform: translate(-50%, -50%);
+    border-radius: 30px;
+    width: 65%;
+    height: 70vh;
+    background-color: rgba(255, 255, 255, 0.7);
+    box-shadow: 60px -16px rgb(181, 182, 182);
+    border: 1px solid #dddddd;
+    
+  }
+.title{
+ text-align: end;
+}
+  .Container {
+    height: 100vh;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+/* Cadastro.css */
+.Container {
+  display: flex;
+}
+
+.header {
+  background-color: #333;
+  padding: 10px;
+  text-align: center;
+}
+
+.Navbar-Lateral {
+  width: 200px;
+  background-color: #333;
+  padding: 20px;
+}
+
+.Navbar-Lateral button {
+  display: block;
+  background-color: #5b90c2;
+  border: none;
+  color: #fff;
+  text-align: left;
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.Navbar-Lateral button img {
+  margin-left: 10px;
+}
+
+.Card-principal {
+  flex: 1;
+  padding: 20px;
+  background-color: #f0f0f0;
+}
+
+.title {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+FormInput {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+FormCadastro {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.inputs {
+  flex: 1;
+  margin-right: 20px;
+}
+
+.inputs label {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.inputs input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+EnviarCadastro {
+  background-color: #0074d9;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+EnviarCadastro:hover {
+  background-color: #0056a9;
+}
+
+.IconeTela {
+  width: 20px;
+  height: 20px;
+  margin-left: 10px;
+}
+
+/* Estilos para a tabela de pesquisa */
+.Pesquisa {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.Pesquisa input {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.Pesquisa .IconeLupa {
+  width: 20px;
+  height: 20px;
+  margin-left: 10px;
+}
+
+.Tabela {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.Tabela th, .Tabela td {
+  border: 1px solid #ccc;
+  padding: 10px;
+  text-align: center;
+}
+
+.Tabela th {
+  background-color: #333;
+  color: #fff;
+}
+
+.cadastro-status {
+  color: green;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+/* Outros estilos conforme necessário */
+
+  .logo {
+    height: auto;
+    float: left;
+  }
+  
+  .content {
+    text-align: center;
+  }
+  
+  h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: white;
+    
+  }
+  
+  input {
+    background-color: #004687;
+    padding: 10px;
+    font-size: 16px;
+    width: 100vh;
+    max-width: 400px;
+    border: 3px solid #ffffff;
+    color: white;
+    border-radius: 22px;
+  }

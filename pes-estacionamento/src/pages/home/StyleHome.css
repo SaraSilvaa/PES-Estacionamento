@@ -5,7 +5,7 @@ body {
 
 /* Adicione regras de mídia para telas menores */
 @media screen and (max-width: 768px) {
-  *, .FormInput, .FormTable {
+  *, .FormInput {
     margin-left: 0;
     width: 100%;
   }
@@ -31,7 +31,6 @@ body {
     border-collapse: collapse;
     margin-top: 20px; /* Adiciona um espaçamento superior para melhorar o visual */
     overflow-x: auto; /* Adicionado para permitir rolar horizontalmente se necessário */
-width: 100%;
   }
   
   .FormTable {
@@ -39,6 +38,7 @@ width: 100%;
     flex-direction: column;
     align-items: center;
     margin: auto;
+    
   }
   .Tabela th, .Tabela td {
     border: 1px solid #ddd;
@@ -49,7 +49,6 @@ width: 100%;
     color: white;
   }
   .Tabela td {
-    background-color: #bfcae2;
     color: rgb(0, 0, 0);
     width: 100%;
   }
@@ -85,9 +84,6 @@ width: 100%;
     width: 90%;
     height: auto;
   }
-}
-/* Estilos adicionais para telas maiores (não móveis) */
-@media screen and (min-width: 769px) {
   .cadastroInput {
     width: 100%;
     margin: 10px 0;
@@ -102,98 +98,173 @@ width: 100%;
     margin-top: 10px;
   }
   
-  /* Estilos para o botão de cadastrar */
-  .EnviarCadastro {
-    background-color: #4c6baf;
-    color: white;
-    padding: 10px 15px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 16px;
-  }
+
   
-  .EnviarCadastro:hover {
-    background-color: rgb(149, 193, 230);
-  }
-  
-  /* Estilos para a mensagem de status do cadastro */
-  .cadastro-status {
-    margin-top: 10px;
-    font-size: 16px;
-    color: #4caf50; /* Verde */
-  }
-  
-  .cadastro-status.error {
-    color: #f44336; /* Vermelho */
-  }
-  
-  /* Estilos para a tabela de resultados */
-  .Tabela {
-    margin-right: -35vh; /* Alterado para porcentagem para melhor adaptação em telas menores */
-margin: auto;
-    width: 30%;
-    border-collapse: collapse;
-  }
-  
-  .Tabela th, .Tabela td {
-    border: 1px solid #ddd;
-    padding: 8px;
-    text-align: left;
-  }
-  
-  .Tabela th {
-    background-color: #4c6baf;
-    color: white;
-  }
-  
-  .Tabela tr:hover {
-    background-color: #f5f5f5;
-  }
-  
-  /* Estilos para o ícone na tabela */
-  .IconeTabela {
-    width: 20px;
-    height: 20px;
-    margin-right: 5px;
-  }
-  
-  /* Estilos para a área de pesquisa */
-  .Pesquisa {
-    display: flex;
-    align-items: center;
-    margin-bottom: 20px;
-  }
-  
-  .Pesquisa input {
+  .modal {
+    display: block;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
     width: 100%;
-    padding: 10px;
-    border: 1px solid #005c9e;
-    border-radius: 15px;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4);
   }
   
-  .Pesquisa img {
-    cursor: pointer;
-  }
-  .FormInput {
-    margin-right: -35vh; /* Alterado para porcentagem para melhor adaptação em telas menores */
-    width: 30%;
-    margin: auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: auto;
-  }
-  
-  /* Estilos para o modal */
   .modal-content {
     background-color: #fefefe;
-    margin: 10% auto; /* Ajuste para o centro da tela */
-    padding: 20px;
+    margin: 4% auto;
+    padding: 30px;
     border: 1px solid #888;
-    width: 90%;
-    height: auto;
+    width: 80%;
+    height: 50%;
   }
+}
+/* Estilos adicionais para telas maiores (não móveis) */
+@media screen and (min-width: 769px) {
+    
+/* Estilos para os inputs do formulário de cadastro */
+.cadastroInput {
+  width: 100%;
+  margin: 10px 0;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+
+}
+
+/* Espaçamento entre os inputs */
+.cadastroInput + .cadastroInput {
+  margin-top: 10px;
+}
+
+/* Estilos para o botão de cadastrar */
+.EnviarCadastro {
+  background-color: #4c6baf;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.EnviarCadastro:hover {
+  background-color: rgb(149, 193, 230);
+}
+
+/* Estilos para a mensagem de status do cadastro */
+.cadastro-status {
+  margin-top: 10px;
+  font-size: 16px;
+  color: #4caf50; /* Verde */
+}
+
+.cadastro-status.error {
+  color: #f44336; /* Vermelho */
+}
+
+/* Estilos para a tabela de resultados */
+.Tabela {
+  width: 100%;
+  border-collapse: collapse;
+
+}
+
+.Tabela th, .Tabela td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+.Tabela th {
+  background-color: #4c6baf;
+  color: white;
+}
+
+.Tabela tr:hover {
+  background-color: #f5f5f5;
+}
+
+/* Estilos para o ícone na tabela */
+.IconeTabela {
+  width: 20px;
+  height: 20px;
+  margin-right: 5px;
+}
+
+/* Estilos para a área de pesquisa */
+.Pesquisa {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.Pesquisa input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #005c9e;
+  border-radius: 15px;
+}
+
+.Pesquisa img {
+  cursor: pointer;
+}
+.body {
+  /* background: linear-gradient(to right, #3a66c5, #8297c0); */
+  margin: auto;
+  height: auto;
+
+}
+
+/* Estilos para o formulário de entrada */
+.FormInput {
+  margin-left: 5%; /* Alterado para porcentagem para melhor adaptação em telas menores */
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: auto;
+  padding: 30px;
+}
+
+/* Estilos para o modal */
+.modal {
+  display: block;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0,0,0);
+  background-color: rgba(0,0,0,0.4);
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 4% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  height: 50%;
+}
+.FormTable{
+  margin-left: 55px; /* Alterado para porcentagem para melhor adaptação em telas menores */
+  width: 70%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 50px;
+
+}
+  
 }
 

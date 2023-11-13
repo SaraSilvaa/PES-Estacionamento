@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import SidebarMenu from '../../components/sidebar/sidebar';
-import Buscar from '../../img/icone_buscarcarros.png';
+// import Buscar from '../../img/icone_buscarcarros.png';
 import './StyleHome.css';
 import axios from 'axios';
 import { format } from 'date-fns';

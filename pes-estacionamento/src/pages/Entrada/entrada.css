@@ -1,4 +1,4 @@
-.app {
+/* .app {
     background-color: #004687;
     display: flex;
     flex-direction: column;
@@ -21,13 +21,13 @@
     text-align: center;
   }
   
-  h1 {
+  .h1 {
     font-size: 24px;
     margin-bottom: 20px;
     color: white;
   }
   
-  input {
+  .input {
     background-color: #004687;
     padding: 10px;
     font-size: 16px;
@@ -36,4 +36,4 @@
     border: 3px solid #ffffff;
     color: white;
     border-radius: 22px;
-  }
+  } */

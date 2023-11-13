@@ -1,0 +1,122 @@
+/* StyleHome.css */
+
+.FormInput {
+    margin-left: 35vh;
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  /* Adicione estas regras de mídia para o Formulário de Cadastro e a Tabela */
+@media screen and (max-width: 768px) {
+    .FormInput, .FormTable {
+      margin-left: 0;
+      width: 100%;
+    }
+  
+    .Pesquisa {
+      flex-direction: column;
+    }
+  
+    .Pesquisa input {
+      margin-bottom: 10px;
+    }
+  }
+  
+  /* Estilos para os inputs do formulário de cadastro */
+  .cadastroInput {
+    width: 100%;
+    margin: 10px 0;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+  
+  /* Espaçamento entre os inputs */
+  .cadastroInput + .cadastroInput {
+    margin-top: 10px;
+  }
+  
+  /* Estilos para o botão de cadastrar */
+  .EnviarCadastro {
+    background-color: #4caf50;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  .EnviarCadastro:hover {
+    background-color: #45a049;
+  }
+  
+  /* Estilos para a mensagem de status do cadastro */
+  .cadastro-status {
+    margin-top: 10px;
+    font-size: 16px;
+    color: #4caf50; /* Verde */
+  }
+  
+  .cadastro-status.error {
+    color: #f44336; /* Vermelho */
+  }
+  
+  .FormTable {
+    margin-left: 35vh;
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  /* Adicione estilos para a área de pesquisa */
+.Pesquisa {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .Pesquisa input {
+    flex-grow: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .Pesquisa img {
+    cursor: pointer;
+  }
+  
+  /* Adicione estilos para a tabela de resultados */
+  .Tabela {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  
+  .Tabela th, .Tabela td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+  }
+  
+  .Tabela th {
+    background-color: #4CAF50;
+    color: white;
+  }
+  
+  .Tabela tr:hover {
+    background-color: #f5f5f5;
+  }
+  
+  /* Adicione estilos para o ícone na tabela */
+  .IconeTabela {
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
+  }
+  

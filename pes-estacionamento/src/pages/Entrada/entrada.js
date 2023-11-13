@@ -1,8 +1,8 @@
-import './Login.css';
+import '../../pages/Entrada/entrada.css'
 import { Link } from 'react-router-dom';
 import Logo from '../../img/logo.png';
 
-export const Home = () => {
+export const Entrada = () => {
   return (
     <div className='container'>
       <img src={Logo} alt="Logo" className="logo" />
@@ -16,4 +16,4 @@ export const Home = () => {
   );
 }
 
-export default Home;
+export default Entrada;

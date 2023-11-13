@@ -8,6 +8,41 @@
     align-items: center;
     justify-content: center;
   }
+  .modal {
+    display: block;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4);
+  }
+  
+  .modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+  }
+  
+  .close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  
   /* Adicione estas regras de mídia para o Formulário de Cadastro e a Tabela */
 @media screen and (max-width: 768px) {
     .FormInput, .FormTable {
@@ -41,7 +76,7 @@
   
   /* Estilos para o botão de cadastrar */
   .EnviarCadastro {
-    background-color: #4caf50;
+    background-color: #4c6baf;
     color: white;
     padding: 10px 15px;
     border: none;
@@ -51,7 +86,7 @@
   }
   
   .EnviarCadastro:hover {
-    background-color: #45a049;
+    background-color: rgb(149, 193, 230)
   }
   
   /* Estilos para a mensagem de status do cadastro */
@@ -105,7 +140,7 @@
   }
   
   .Tabela th {
-    background-color: #4CAF50;
+    background-color: #4c6baf;
     color: white;
   }
   

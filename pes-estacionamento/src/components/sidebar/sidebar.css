@@ -1,11 +1,11 @@
 .sidebar {
-  background-color: #333;
+  background-color: #011a50;
   width: 200px;
   height: 100%;
   position: absolute;
-  overflow:auto;
-  /* z-index: -99999; */
+  overflow: auto;
 }
+
 @media screen and (max-width: 768px) {
   .sidebar {
     width: 100%;
@@ -21,11 +21,28 @@
 
 .menu li {
   padding: 15px 0;
-  color: #8d97ec;
+  color: #ecedf8;
   text-align: center;
   cursor: pointer;
 }
 
 .menu li:hover {
-  background-color: #555;
+  background-color: #4c6baf;
+  border-radius: 25px;
+}
+
+.sidebar-footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  background-color: #011a50;
+  color: #ecedf8;
+}
+
+.sidebar-logo {
+  width: 50%;
+  height: auto;
+  margin-top: 10px; /* Ajuste conforme necessário */
 }

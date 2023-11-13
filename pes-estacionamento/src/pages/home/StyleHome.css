@@ -1,4 +1,9 @@
 /* StyleHome.css */
+.body {
+  /* background: linear-gradient(to right, #3a66c5, #8297c0); */
+  margin: auto;
+  height: auto;
+}
 
 .FormInput {
     margin-left: 35vh;
@@ -7,6 +12,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+  height: 100vh;
   }
   .modal {
     display: block;
@@ -23,10 +29,11 @@
   
   .modal-content {
     background-color: #fefefe;
-    margin: 15% auto;
+    margin: 4% auto;
     padding: 20px;
     border: 1px solid #888;
     width: 80%;
+    height: 50%;
   }
   
   .close {
@@ -106,6 +113,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    height: 100vh;
     justify-content: center;
   }
   /* Adicione estilos para a área de pesquisa */
@@ -116,10 +124,11 @@
   }
   
   .Pesquisa input {
-    flex-grow: 1;
+    
+    width: 40em;
     padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+    border: 1px solid #005c9e;
+    border-radius: 15px;
   }
   
   .Pesquisa img {
@@ -130,7 +139,6 @@
   .Tabela {
     width: 100%;
     border-collapse: collapse;
-    margin-top: 20px;
   }
   
   .Tabela th, .Tabela td {

@@ -85,7 +85,6 @@ export const Cadastro = () => {
 
       if (response.status === 200 || response.status === 201) {
         setCadastroStatus('Cadastro realizado com sucesso.');
-        alert('Cadastro realizado com sucesso.');
         pesquisarVeiculos();
         setValor(null);
       } else {
@@ -146,13 +145,18 @@ export const Cadastro = () => {
       console.error('Erro ao finalizar estadia do cliente:', error);
     }
   };
+  
+  
+  
+  
+  
+  
 
   return (
-    <div>
+    <div className='body'>
       <SidebarMenu changePage={changePage} />
       {page === 'Cadastrar' && (
         <div className='FormInput'>
-          <h1>Cadastrar</h1>
           <form onSubmit={handleSubmit}>
             <label>
               Tipo de Automóvel:
@@ -182,7 +186,6 @@ export const Cadastro = () => {
 
       {page === 'Pesquisar' && (
         <div className='FormTable'>
-          <h1 className='title'>Pesquisar Veículos <img src={Buscar} className='IconeTela' alt='logo' /></h1>
           <div className='Pesquisa'>
             <input
               type="text"
@@ -218,7 +221,7 @@ export const Cadastro = () => {
                     {contato.status}
                   </td>
                   <td>
-                    <button className='EnviarCadastro' onClick={() => openModal(contato.id)}>Finalizar</button>
+                  <button className='EnviarCadastro' onClick={() => openModal(contato.id)}>Finalizar</button>
                   </td>
                 </tr>
               ))}
@@ -227,7 +230,9 @@ export const Cadastro = () => {
         </div>
       )}
 
-      {page === 'Faturar' && <div className='title'>Contact Content</div>}
+      {page === 'Faturar' && 
+      <div className='title'>Contact Content</div>
+      }
 
       {/* Basic Modal */}
       {isModalOpen && (

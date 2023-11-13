@@ -89,12 +89,10 @@ export const Cadastro = () => {
         setValor(null);
       } else {
         setCadastroStatus('Erro ao cadastrar. Por favor, tente novamente.');
-        alert('Erro ao cadastrar. Por favor, tente novamente.');
       }
     } catch (error) {
       console.log(error.response);
       setCadastroStatus('Erro ao cadastrar. Por favor, tente novamente.');
-      alert('Erro ao cadastrar. Por favor, tente novamente.');
     }
   };
 
@@ -192,7 +190,7 @@ export const Cadastro = () => {
               placeholder="Pesquisar"
               onChange={(e) => pesquisarVeiculos(e.target.value)}
             />
-            <img src={Buscar} className='IconeLupa' alt='lupa' />
+            {/* <img src={Buscar} className='IconeLupa' alt='lupa' /> */}
           </div>
           <table className='Tabela'>
             <thead>

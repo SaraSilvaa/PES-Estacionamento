@@ -1,20 +1,10 @@
+/* Estilos para a barra lateral em telas maiores */
 .sidebar {
   background-color: #011a50;
   width: 200px;
   height: 100%;
   position: absolute;
   overflow: auto;
-}
-
-@media screen and (max-width: 768px) {
-  .sidebar {
-    width: 100%;
-    position: relative;
-  }
-  .sidebar-logo {
-    display: none; /* Adicione esta linha para ocultar .sidebar-logo */
-
-  }
 }
 
 .menu {
@@ -45,8 +35,21 @@
   color: #ecedf8;
 }
 
-.sidebar-logo {
-  width: 50%;
-  height: auto;
-  margin-top: 10px; /* Ajuste conforme necessário */
+/* Estilos para a barra lateral em telas menores (móveis) */
+@media screen and (max-width: 768px) {
+  .sidebar {
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    
+  }
+
+  .sidebar-logo {
+    display: none; /* Oculta a logo em telas menores */
+  }
+
+  .menu li {
+    text-align: left; /* Ajusta o alinhamento do texto para a esquerda */
+    padding-left: 20px; /* Adiciona um recuo ao texto para melhorar a legibilidade */
+  }
 }

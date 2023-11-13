@@ -1,4 +1,4 @@
-import '../../pages/Entrada/entrada.css'
+import '../../pages/Entrada/entrada.css';
 import { Link } from 'react-router-dom';
 import Logo from '../../img/logo.png';
 

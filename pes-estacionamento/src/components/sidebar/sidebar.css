@@ -11,6 +11,10 @@
     width: 100%;
     position: relative;
   }
+  .sidebar-logo {
+    display: none; /* Adicione esta linha para ocultar .sidebar-logo */
+
+  }
 }
 
 .menu {

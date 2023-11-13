@@ -15,6 +15,8 @@ export const Cadastro = () => {
   const [status] = useState('Ativo');
   const [cadastroStatus, setCadastroStatus] = useState(null);
   const [contato, setContatos] = useState([]);
+  const [valor, setValor ] = useState(null);
+
 
   useEffect(() => {
     pesquisarVeiculos();
@@ -24,14 +26,12 @@ export const Cadastro = () => {
     const horaAtual = new Date();
     const horas = horaAtual.getHours();
     const minutos = horaAtual.getMinutes();
-    const segundos = horaAtual.getSeconds();
   
     // Formate os valores para garantir que sempre tenham dois dígitos
     const formatadoHoras = horas < 10 ? `0${horas}` : horas;
     const formatadoMinutos = minutos < 10 ? `0${minutos}` : minutos;
-    const formatadoSegundos = segundos < 10 ? `0${segundos}` : segundos;
   
-    return `${formatadoHoras}:${formatadoMinutos}:${formatadoSegundos}`;
+    return `${formatadoHoras}:${formatadoMinutos}`;
   };
   
 
@@ -66,7 +66,7 @@ export const Cadastro = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+  
     try {
       const response = await axios.post('https://web-nf32wtl2j0zn.up-de-fra1-1.apps.run-on-seenode.com/automovel', {
         tipoAutomovel,
@@ -74,18 +74,20 @@ export const Cadastro = () => {
         cpfcnpj,
         status,
         tempoEntrada: getHoraAtual(),
+        valor,
       });
-
+  
       if (response.status === 200 || response.status === 201) {
         setCadastroStatus('Cadastro realizado com sucesso.');
         alert('Cadastro realizado com sucesso.');
         pesquisarVeiculos();
+        setValor(null); // Limpa o campo valor após o cadastro
       } else {
         setCadastroStatus('Erro ao cadastrar. Por favor, tente novamente.');
         alert('Erro ao cadastrar. Por favor, tente novamente.');
       }
     } catch (error) {
-      console.error(error);
+      console.log(error.response);
       setCadastroStatus('Erro ao cadastrar. Por favor, tente novamente.');
       alert('Erro ao cadastrar. Por favor, tente novamente.');
     }

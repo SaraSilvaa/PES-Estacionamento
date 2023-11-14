@@ -1,15 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import SidebarMenu from '../../components/sidebar/sidebar';
-// import Buscar from '../../img/icone_buscarcarros.png';
 import './StyleHome.css';
 import axios from 'axios';
 import { format } from 'date-fns';
+import { ModelTraining } from '@mui/icons-material';
 
 export const Cadastro = () => {
   const [page, setPage] = useState('Home');
   const changePage = (newPage) => {
     setPage(newPage);
   };
+  const [id, ] = useState('');
   const [tipoAutomovel, setTipo] = useState('');
   const [placa, setPlaca] = useState('');
   const [cpfcnpj, setCpfCnpj] = useState('');
@@ -17,16 +18,42 @@ export const Cadastro = () => {
   const [cadastroStatus, setCadastroStatus] = useState(null);
   const [contato, setContatos] = useState([]);
   const [valor, setValor] = useState(null);
+  const [selectedItem, setSelectedItem] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   const getDataAtual = () => {
     return format(new Date(), 'dd-MM-yyyy');
   };
-
-  const [data] = useState(getDataAtual());
 
   useEffect(() => {
     pesquisarVeiculos();
   }, []);
 
+  const finalizarRegistro = async (id) => {
+    try {
+      await pesquisarVeiculos();
+      openModal(id);
+    } catch (error) {
+      console.error('Erro ao finalizar registro:', error);
+    }
+  };
+  
+  const openModal = (id) => {
+    console.log("Selected Contact ID do OPENMOD:", id);
+  
+    // Ensure that selectedItem is not undefined before setting the state
+    if (id) {
+      setSelectedItem(id);
+      setIsModalOpen(true);
+    } else {
+      console.error('Erro ao abrir modal: Item não encontrado.');
+    }
+  };
+  // const openModalAndFinalizar = (id) => {
+  //   openModal(id);
+  //   finalizarRegistro(id);
+  // };
+  
   const getHoraAtual = () => {
     const horaAtual = new Date();
     const horas = horaAtual.getHours();
@@ -52,35 +79,19 @@ export const Cadastro = () => {
     }
   };
 
-  const finalizarRegistro = async (id) => {
-    try {
-      const response = await axios.delete(`https://web-nf32wtl2j0zn.up-de-fra1-1.apps.run-on-seenode.com/automovel${id}`);
-  
-      if (response.status === 200) {
-        console.log(`Registro com o ID ${id} finalizado com sucesso.`);
-        pesquisarVeiculos();
-        closeModal(); // Close the modal after finalizing
-      } else {
-        console.error(`Erro ao finalizar o registro com o ID ${id}. Status: ${response.status}`);
-      }
-    } catch (error) {
-      console.error(`Erro ao finalizar o registro com o ID ${id}.`, error);
-    }
-  };
-  
-
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
       const response = await axios.post('https://web-nf32wtl2j0zn.up-de-fra1-1.apps.run-on-seenode.com/automovel', {
+        id,
         tipoAutomovel,
         placa,
         cpfcnpj,
         status,
         tempoEntrada: getHoraAtual(),
         valor,
-        data,
+        data: getDataAtual(),
       });
 
       if (response.status === 200 || response.status === 201) {
@@ -96,63 +107,10 @@ export const Cadastro = () => {
     }
   };
 
-  // Modal state and functions
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [itemIdToFinalize, setItemIdToFinalize] = useState(null);
-  const getPlacaById = (id) => {
-    const selectedItem = contato.find(item => item.id === id);
-    return selectedItem ? selectedItem.placa : 'Placa não encontrada';
-  };
-  
-
-  const closeModal = () => {
-    setItemIdToFinalize(null);
-    setIsModalOpen(false);
-  };
-  const getCpfCnpjById = (id) => {
-    const selectedItem = contato.find(item => item.id === id);
-    return selectedItem ? selectedItem.cpfcnpj : 'CPF/CNPJ não encontrado';
-  };
-  const openModal = (id) => {
-    setItemIdToFinalize(id);
-    setIsModalOpen(true);
-  };
-  
-  
-  const confirmFinalize = async () => {
-    try {
-      if (itemIdToFinalize !== null) {
-        const selectedItem = contato.find(item => item.id === itemIdToFinalize);
-  
-        if (selectedItem) {
-          const { placa, cpfcnpj } = selectedItem;
-          console.log(`Finalizando estadia do cliente com Placa ${placa} e CNPJ/CPF ${cpfcnpj}`);
-  
-          // Perform finalization logic
-          await finalizarRegistro(itemIdToFinalize);
-  
-          // Close the modal
-          closeModal();
-        } else {
-          console.error(`Erro ao encontrar o item com ID ${itemIdToFinalize}.`);
-        }
-      } else {
-        console.error('Nenhum item selecionado para finalizar.');
-      }
-    } catch (error) {
-      console.error('Erro ao finalizar estadia do cliente:', error);
-    }
-  };
-  
-  
-  
-  
-  
-  
-
   return (
     <div className='body'>
       <SidebarMenu changePage={changePage} />
+
       {page === 'Cadastrar' && (
         <div className='FormInput'>
           <form onSubmit={handleSubmit}>
@@ -184,14 +142,6 @@ export const Cadastro = () => {
 
       {page === 'Pesquisar' && (
         <div className='FormTable'>
-          <div className='Pesquisa'>
-            <input
-              type="text"
-              placeholder="Pesquisar"
-              onChange={(e) => pesquisarVeiculos(e.target.value)}
-            />
-            {/* <img src={Buscar} className='IconeLupa' alt='lupa' /> */}
-          </div>
           <table className='Tabela'>
             <thead>
               <tr>
@@ -218,9 +168,9 @@ export const Cadastro = () => {
                     ) : null}
                     {contato.status}
                   </td>
-                  <td>
-                  <button className='EnviarCadastro' onClick={() => openModal(contato.id)}>Finalizar</button>
-                  </td>
+                  
+                
+                  <button className='EnviarCadastro' onClick={() => openModal(contato._id)}>Finalizar</button>
                 </tr>
               ))}
             </tbody>
@@ -229,20 +179,34 @@ export const Cadastro = () => {
       )}
 
       {page === 'Faturar' && 
-      <div className='title'>Contact Content</div>
+        <div className='title'>Contact Content</div>
       }
-
-      {/* Basic Modal */}
-      {isModalOpen && (
-  <div className='modal'>
-    <div className='modal-content'>
-      <span className='close' onClick={closeModal}>&times;</span>
-      <p>Finalizando estadia do cliente {getPlacaById(itemIdToFinalize)} ({getCpfCnpjById(itemIdToFinalize)})?</p>
-      <button onClick={confirmFinalize}>Yes</button>
-      <button onClick={closeModal}>No</button>
+{selectedItem && isModalOpen && (
+  <div className="modal">
+    <div className="modal-content">
+      <span className="close" onClick={() => setIsModalOpen(false)}>&times;</span>
+      {/* Encontrar o item correto com base no ID */}
+      {contato.map(item => {
+        if (item._id === selectedItem) {
+          return (
+            <React.Fragment key={item._id}>
+              <p>Modelo: {item.tipoAutomovel}</p>
+              <p>Placa: {item.placa}</p>
+              <p>CPF/CNPJ: {item.cpfcnpj}</p>
+              <p>Data: {item.data}</p>
+              <p>Hora Entrada: {item.tempoEntrada}</p>
+              <button className='EnviarCadastro' onClick={() => finalizarRegistro(selectedItem)}>Finalizar</button>
+            </React.Fragment>
+          );
+        }
+        return null;
+      })}
     </div>
   </div>
 )}
-    </div>
+
+
+
+ </div>
   );
 };

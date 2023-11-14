@@ -119,8 +119,12 @@ export const Cadastro = () => {
           <form onSubmit={handleSubmit}>
             <label>
               Tipo de Automóvel:
-              <input className='cadastroInput' type="text" value={tipoAutomovel} onChange={(e) => setTipo(e.target.value)} />
+              <select className='cadastroInput' value={tipoAutomovel} onChange={(e) => setTipo(e.target.value)}>
+                <option value="carro">Carro</option>
+                <option value="moto">Moto</option>
+              </select>
             </label>
+
             <label>
               Placa:
               <input className='cadastroInput' type="text" value={placa} onChange={(e) => setPlaca(e.target.value)} />
@@ -148,7 +152,7 @@ export const Cadastro = () => {
           <table className='Tabela'>
             <thead>
               <tr>
-                <th>Modelo</th>
+                <th>Tipo</th>
                 <th>Placa</th>
                 <th>CPF/CNPJ</th>
                 <th>Data</th>

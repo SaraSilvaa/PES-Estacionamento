@@ -3,7 +3,7 @@ import SidebarMenu from '../../components/sidebar/sidebar';
 import './StyleHome.css';
 import axios from 'axios';
 import { format } from 'date-fns';
-import { ModelTraining } from '@mui/icons-material';
+// import { ModelTraining } from '@mui/icons-material';
 
 export const Cadastro = () => {
   const [page, setPage] = useState('Home');

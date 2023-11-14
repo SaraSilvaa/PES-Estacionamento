@@ -226,8 +226,10 @@ export const Cadastro = () => {
                 <input type="text" placeholder="Valor" /><br></br>
 
                 {/* Adicione as classes corretas para os estilos dos botões */}
-                <button className="finalizar" onClick={() => finalizarRegistro(selectedItem)}>Finalizar</button>
-                <button className="cancelar" onClick={() => setIsModalOpen(false)}>Cancelar</button>
+                <div className='botoes'>
+      <button className="finalizar" onClick={() => finalizarRegistro(selectedItem)}>Finalizar</button>
+      <button className="cancelar" onClick={() => setIsModalOpen(false)}>Cancelar</button>
+    </div>
               </React.Fragment>
             );
           }

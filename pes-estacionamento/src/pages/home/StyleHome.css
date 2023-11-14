@@ -113,14 +113,133 @@ body {
     background-color: rgba(0,0,0,0.4);
   }
   
+  
+  
   .modal-content {
     background-color: #fefefe;
     margin: 4% auto;
-    padding: 30px;
+    padding: 10px;
     border: 1px solid #888;
-    width: 80%;
-    height: 50%;
+    width: 87%;
+    height: 60%;
   }
+  .FormTable{
+    margin-left: 55px; /* Alterado para porcentagem para melhor adaptação em telas menores */
+    width: 70%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 50px;
+  
+  }
+  
+  .modal-content .card {
+    position: relative; /* Permite posicionar elementos filhos relativos a este cartão */
+    background-color: #0d2a69;
+    padding: 20px;
+    margin-top: 20px;
+    border-radius: 8px;
+    color: #fff;
+    text-align: center;
+    width: 90%;
+    height: auto;
+    margin: 0 auto;
+    box-sizing: border-box;
+  }
+  
+  /* Estilos para a bola centralizada acima do card */
+  .modal-content .card .bola {
+    position: absolute;
+    top: -20px; /* Posiciona a bola acima do card */
+    left: 50%; /* Centraliza horizontalmente */
+    transform: translateX(-50%); /* Ajusta para centralizar corretamente */
+  }
+  
+  /* Estilos para o círculo branco */
+  .modal-content .card .bola .circulo {
+    background-color: #0d2a69;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+  }
+  
+  /* Estilos para a imagem dentro do círculo */
+  .modal-content .card .bola .circulo img {
+    width: 80%; /* Ajuste a largura conforme necessário */
+    height: auto; /* Mantém a proporção original */
+  }
+  
+  /* Estilos para o input dentro do cartão */
+  .modal-content .card input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: none;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+  
+  /* Estilos para os botões dentro do cartão */
+  .modal-content .card button {
+    background-color: #4caf50;
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-right: 10px;
+    width: 50%;
+  }
+  .modal-content .card .botoes {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
+  .modal-content .card button {
+    background-color: #4caf50;
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-right: 10px;
+    flex: 1; /* Ocupa todo o espaço disponível */
+  }
+  
+  /* Altere a cor do botão "Finalizar" quando hover, se desejar */
+  .modal-content .card button.finalizar:hover {
+    background-color: #45a049;
+  }
+  
+  /* Altere a cor do botão "Cancelar" quando hover, se desejar */
+  .modal-content .card button.cancelar:hover {
+    background-color: #e74c3c;
+  }
+  
+  .close{
+    cursor: pointer;
+  }
+  .placaInput {
+    background-color: #0d2a69;
+    color: rgb(255, 255, 255);
+    border: 3px solid white;
+    border-radius: 18px;
+    width: 70%;
+    align-items: center;
+    margin: 0 auto; /* Centraliza horizontalmente */
+    margin-top: 6%;
+    z-index: 99999;
+  
+    /* Outros estilos, se necessário */
+  }
+  
 }
 /* Estilos adicionais para telas maiores (não móveis) */
 @media screen and (min-width: 769px) {

@@ -2,7 +2,10 @@ import React, { useState, useEffect } from 'react';
 import SidebarMenu from '../../components/sidebar/sidebar';
 import './StyleHome.css';
 import axios from 'axios';
-import { format } from 'date-fns';
+import carro from '../../img/carro.png';
+import sinal from '../../img/sinal.png';
+
+import { format } from 'date-fns'; 
 // import { ModelTraining } from '@mui/icons-material';
 
 export const Cadastro = () => {
@@ -185,25 +188,61 @@ export const Cadastro = () => {
   <div className="modal">
     <div className="modal-content">
       <span className="close" onClick={() => setIsModalOpen(false)}>&times;</span>
-      {/* Encontrar o item correto com base no ID */}
-      {contato.map(item => {
-        if (item._id === selectedItem) {
-          return (
-            <React.Fragment key={item._id}>
-              <p>Modelo: {item.tipoAutomovel}</p>
-              <p>Placa: {item.placa}</p>
-              <p>CPF/CNPJ: {item.cpfcnpj}</p>
-              <p>Data: {item.data}</p>
-              <p>Hora Entrada: {item.tempoEntrada}</p>
-              <button className='EnviarCadastro' onClick={() => finalizarRegistro(selectedItem)}>Finalizar</button>
-            </React.Fragment>
-          );
-        }
-        return null;
-      })}
+      <div className="card">
+        {/* Bola centralizada acima do card */}
+        <div className="bola">
+          <div className="circulo">
+            <img src={sinal} alt="Sinal de Estacionamento" />
+          </div>
+        </div>
+
+        {/* Encontrar o item correto com base no ID */}
+        {selectedItem && isModalOpen && (
+  <div className="modal">
+    <div className="modal-content">
+      <span className="close" onClick={() => setIsModalOpen(false)}>&times;</span>
+      <div className="card">
+        {/* Bola centralizada acima do card */}
+        <div className="bola">
+          <div className="circulo">
+            <img src={sinal} alt="Sinal de Estacionamento" />
+          </div>
+        </div>
+
+        {/* Encontrar o item correto com base no ID */}
+        {contato.map(item => {
+          if (item._id === selectedItem) {
+            return (
+              <React.Fragment key={item._id}>
+                {/* Use a classe placaInput aqui */}
+                                <p className='placaInput'>Placa {item.placa}</p>
+
+
+                {/* Outras informações se necessário */}
+                {/* <p>CPF/CNPJ: {item.cpfcnpj}</p> */}
+                {/* <p>Data: {item.data}</p> */}
+                <p>Hora Entrada: {item.tempoEntrada}</p>
+
+                <input type="text" placeholder="Valor" /><br></br>
+
+                {/* Adicione as classes corretas para os estilos dos botões */}
+                <button className="finalizar" onClick={() => finalizarRegistro(selectedItem)}>Finalizar</button>
+                <button className="cancelar" onClick={() => setIsModalOpen(false)}>Cancelar</button>
+              </React.Fragment>
+            );
+          }
+          return null;
+        })}
+      </div>
     </div>
   </div>
 )}
+
+      </div>
+    </div>
+  </div>
+)}
+
 
 
 

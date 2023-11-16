@@ -1,7 +1,7 @@
 /* Remova a margem padrão do corpo */
 body {
   margin: 0;
-  overflow-y: hidden;
+
 }
 
 /* Adicione regras de mídia para telas menores */
@@ -27,8 +27,8 @@ body {
   }
 
   /* Ajustes para a tabela de resultados */
+  
   .Tabela {
-    width: 100%;
     margin: 10px 0;
     padding: 10px;
     font-size: 10px;
@@ -39,15 +39,15 @@ body {
   }
 
   .FormTable {
+    max-width: 350px;
     display: flex;
     flex-direction: column;
     align-items: center;
     margin: auto;
-    padding: 20px;
   }
 
   .Tabela th, .Tabela td {
-    border: 1px solid #ddd;
+    border: 0.5px solid #a2b7e7;
     padding: 8px;
     text-align: left;
   }
@@ -102,7 +102,21 @@ body {
     margin-top: 10px;
   }
   
-
+  .Finalizar {
+    background-color: #4c6baf;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 10px;
+    margin-top: 10px;
+    width: 100%;
+  }
+  
+  .Finalizar:hover {
+    background-color: rgb(149, 193, 230);
+  }
   
   .modal {
     display: block;
@@ -306,7 +320,14 @@ body {
     -ms-transform: translateX(26px);
     transform: translateX(26px);
   }
-  
+  .DivTabela {
+    border-radius: 25px;
+    max-height: 65vh; /* Defina a altura máxima desejada para a tabela */
+    width: 250%;
+    background-color: #dae1f1;
+    border-radius: 25px;
+    overflow-x: hidden;
+  }
 }
 /* Estilos adicionais para telas maiores (não móveis) */
 @media screen and (min-width: 769px) {
@@ -344,7 +365,21 @@ body {
 .EnviarCadastro:hover {
   background-color: rgb(149, 193, 230);
 }
+.Finalizar {
+  background-color: #4c6baf;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 10px;
+  margin-top: 10px;
+  width: 100%;
+}
 
+.Finalizar:hover {
+  background-color: rgb(149, 193, 230);
+}
 /* Estilos para a mensagem de status do cadastro */
 .cadastro-status {
   margin-top: 10px;
@@ -372,7 +407,7 @@ body {
 /* Estilos para a tabela de resultados */
 .Tabela {
   padding: 10px;
-  font-size: 12px;
+  font-size: 10px;
   margin: auto;
   width: 100%;
 }

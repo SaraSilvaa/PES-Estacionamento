@@ -22,7 +22,9 @@ export const Cadastro = () => {
   const [valor, setValor] = useState(null);
   const [selectedItem, setSelectedItem] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [filtroAtivo, setFiltroAtivo] = useState(true); // Novo estado para controle do filtro
+  const [filtroAtivo, setFiltroAtivo] = useState(true); 
+  const [switchStatus, setSwitchStatus] = useState(true);
+
   const getDataAtual = () => {
     return format(new Date(), 'dd-MM-yyyy');
   };
@@ -33,36 +35,63 @@ export const Cadastro = () => {
   const handleFiltroClick = () => {
     // Inverte o estado do filtro entre ativo e inativo
     setFiltroAtivo(!filtroAtivo);
+    // Inverte o estado do switch entre ligado e desligado
+    setSwitchStatus(!switchStatus);
   };
   const finalizarRegistro = async (id) => {
+    console.log('Finalizar registro com o ID:', id);
+  
     try {
       const horaSaida = getHoraAtual();
-
-      // Update the automovel with the exit time
-      await axios.put(`https://web-nf32wtl2j0zn.up-de-fra1-1.apps.run-on-seenode.com/automovel/${id}`, {
-        tempoSaida: horaSaida,
-      });
-
-      // Calculate duration and cost
-      const entryTime = contato.find(item => item._id === id).tempoEntrada;
-      const duration = calcularDuracao(entryTime, horaSaida);
+      const selectedItemData = contato.find(item => item._id === id);
+  
+      if (!selectedItemData) {
+        console.error('Erro ao finalizar registro: Item não encontrado.');
+        setCadastroStatus('Erro ao finalizar registro. Item não encontrado.');
+        return;
+      }
+  
+      const duration = calcularDuracao(selectedItemData.tempoEntrada, horaSaida);
       const cost = calcularValor(duration);
-
-      // Open modal with additional information, including cost
-      openModal(id, cost);
+  
+      const response = await axios.put(`https://web-nf32wtl2j0zn.up-de-fra1-1.apps.run-on-seenode.com/automovel/${id}`, {
+        tempoSaida: horaSaida,
+        valor: `R$ ${cost}`,
+        status: 'Finalizado',
+      });
+  
+      openModal(id);
+      setCadastroStatus('Registro finalizado com sucesso.');
+      setIsModalOpen(false);
+      console.log('Modal closed successfully.');
+      console.log('PUT Response:', response);
     } catch (error) {
       console.error('Erro ao finalizar registro:', error);
+      console.log('Response:', error.response);
+  
+      if (error.response && error.response.data && error.response.data.message) {
+        // Display the server error message
+        setCadastroStatus(`Erro ao finalizar registro: ${error.response.data.message}`);
+      } else {
+        // Display a generic error message
+        setCadastroStatus('Erro ao finalizar registro. Tente novamente.');
+      }
     }
   };
+  
+  
+  
+  
+  
   const openModal = (id) => {
-    console.log("Selected Contact ID do OPENMOD:", id);
+    console.log("Voce abriu o cliente com ID:", id);
   
     // Ensure that selectedItem is not undefined before setting the state
     if (id) {
       setSelectedItem(id);
       setIsModalOpen(true);
     } else {
-      console.error('Erro ao abrir modal: Item não encontrado.');
+      console.error('Erro ao abrir modal: ID não encontrado.');
     }
   };
   
@@ -92,7 +121,7 @@ export const Cadastro = () => {
 
     return `${formatadoHoras}:${formatadoMinutos}`;
   };
-
+  
   const pesquisarVeiculos = async () => {
     try {
       const response = await axios.get('https://web-nf32wtl2j0zn.up-de-fra1-1.apps.run-on-seenode.com/automovel');
@@ -142,12 +171,9 @@ export const Cadastro = () => {
       {page === 'Cadastrar' && (
         <div className='FormInput'>
           <form onSubmit={handleSubmit}>
-            <label>
-              Tipo de Automóvel:
-              <select className='cadastroInput' value={tipoAutomovel} onChange={(e) => setTipo(e.target.value)}>
-                <option value="carro">Carro</option>
-                <option value="moto">Moto</option>
-              </select>
+          <label>
+              Modelo:
+              <input className='cadastroInput' type="text" value={tipoAutomovel} onChange={(e) => setTipo(e.target.value)} />
             </label>
             <label>
               Placa:
@@ -171,61 +197,51 @@ export const Cadastro = () => {
         </div>
       )}
 {page === 'Pesquisar' && (
-  
   <div className='FormTable'>
-
-
-
-
-
-<label className="switch">
-  <input type="checkbox" className={`FiltroAtivo ${filtroAtivo ? 'ligado' : 'desligado'}`} onClick={handleFiltroClick} />
-  
-  <span id="mySlider" className="slider round"></span>
- 
-
- </label>
-<div className='DivTabela'>
-  
-    <table className='Tabela'>
-      <thead>
-        <tr>
-          <th>Tipo</th>
-          <th>Placa</th>
-          <th>CPF/CNPJ</th>
-          <th>Data</th>
-          <th>Hora Entrada</th>
-          <th>Status</th>
-          <th>Ações</th>
-        </tr>
-      </thead>
-      <tbody>
-        {contato?.map?.((contato, index) => (
-          (filtroAtivo && contato.status.toLowerCase() === 'ativo') || (!filtroAtivo && contato.status.toLowerCase() === 'finalizado') ? (
-            <tr key={index}>
-              <td>{contato.tipoAutomovel}</td>
-              <td>{contato.placa}</td>
-              <td>{contato.cpfcnpj}</td>
-              <td>{contato.data}</td>
-              <td>{contato.tempoEntrada}</td>
-              <td>
-                {contato.status.toLowerCase() === 'ativo' ? (
-                  <span style={{ color: 'green', marginRight: '8px' }}>●</span>
-                ) : contato.status.toLowerCase() === 'finalizado' ? (
-                  <span style={{ color: 'black', marginRight: '8px' }}>●</span>
-                ) : null}
-                {contato.status}
-              </td>
-              {contato.status.toLowerCase() !== 'finalizado' && (
+    <label className="switch">
+      <input type="checkbox" className={`FiltroAtivo ${filtroAtivo ? 'ligado' : 'desligado'}`} onClick={handleFiltroClick} />
+      <span id="mySlider" className="slider round"></span>
+    </label>
+    <div className='DivTabela'>
+      <table className='Tabela'>
+        <thead>
+          <tr>
+            <th>Tipo</th>
+            <th>Placa</th>
+            <th>CPF/CNPJ</th>
+            <th>Data</th>
+            <th>Hora Entrada</th>
+            <th>Status</th>
+            {switchStatus && <th>Finalizar estadia</th>}
+          </tr>
+        </thead>
+        <tbody>
+          {contato?.map?.((contato, index) => (
+            (filtroAtivo && contato.status.toLowerCase() === 'ativo') || (!filtroAtivo && contato.status.toLowerCase() === 'finalizado') ? (
+              <tr key={index}>
+                <td>{contato.tipoAutomovel}</td>
+                <td>{contato.placa}</td>
+                <td>{contato.cpfcnpj}</td>
+                <td>{contato.data}</td>
+                <td>{contato.tempoEntrada}</td>
                 <td>
-                  <button className='EnviarCadastro' onClick={() => openModal(contato._id)}>Finalizar</button>
+                  {contato.status.toLowerCase() === 'ativo' ? (
+                    <span style={{ color: 'green', marginRight: '8px' }}>●</span>
+                  ) : contato.status.toLowerCase() === 'finalizado' ? (
+                    <span style={{ color: 'black', marginRight: '8px' }}>●</span>
+                  ) : null}
+                  {contato.status}
                 </td>
-              )}
-            </tr>
-          ) : null
-        ))}
-      </tbody>
-    </table>
+                {contato.status.toLowerCase() !== 'finalizado' && (
+                  <td>
+                    <button className='Finalizar' onClick={() => openModal(contato._id)}>Finalizar</button>
+                  </td>
+                )}
+              </tr>
+            ) : null
+          ))}
+        </tbody>
+      </table>
     </div>
   </div>
 )}
@@ -272,7 +288,7 @@ export const Cadastro = () => {
                 </div>
                 <input type="text" placeholder="Valor" value={`R$ ${cost}`} readOnly /><br />
                 <div className='botoes'><br></br>
-                  <button className="finalizar" onClick={() => finalizarRegistro(selectedItem)}>Finalizar</button>
+                  <button className="finalizar" onClick={() => finalizarRegistro(selectedItem)}>Pagamento</button>
                   <button className="cancelar" onClick={() => setIsModalOpen(false)}>Cancelar</button>
                 </div>
               </React.Fragment>

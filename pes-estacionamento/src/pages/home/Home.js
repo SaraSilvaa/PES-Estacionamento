@@ -19,7 +19,7 @@ export const Cadastro = () => {
   const [status] = useState('Ativo');
   const [cadastroStatus, setCadastroStatus] = useState(null);
   const [contato, setContatos] = useState([]);
-  const [valor, setValor] = useState(null);
+  const [valor, setValor] = useState('');
   const [selectedItem, setSelectedItem] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [filtroAtivo, setFiltroAtivo] = useState(true); 

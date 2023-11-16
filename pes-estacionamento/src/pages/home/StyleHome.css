@@ -1,6 +1,7 @@
 /* Remova a margem padrão do corpo */
 body {
   margin: 0;
+  overflow-y: hidden;
 }
 
 /* Adicione regras de mídia para telas menores */
@@ -8,6 +9,7 @@ body {
   *, .FormInput {
     margin-left: 0;
     width: 100%;
+    overflow-x: hidden;
   }
 
   /* Ajustes para a área de pesquisa */
@@ -26,33 +28,35 @@ body {
 
   /* Ajustes para a tabela de resultados */
   .Tabela {
-    margin-left: 0;
+    width: 100%;
+    margin: 10px 0;
+    padding: 10px;
     font-size: 10px;
-    border-collapse: collapse;
-    margin-top: 20px; /* Adiciona um espaçamento superior para melhorar o visual */
-    overflow-x: auto; /* Adicionado para permitir rolar horizontalmente se necessário */
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    overflow-x: auto;
   }
-  
+
   .FormTable {
     display: flex;
     flex-direction: column;
     align-items: center;
     margin: auto;
-    
+    padding: 20px;
   }
+
   .Tabela th, .Tabela td {
     border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
   }
-  
+
   .Tabela th {
     background-color: #4c6baf;
     color: white;
   }
-  .Tabela td {
-    color: rgb(0, 0, 0);
-    width: 100%;
-  }
-  
+
   .Tabela tr:hover {
     background-color: #f5f5f5;
   }
@@ -132,6 +136,8 @@ body {
     align-items: center;
     justify-content: center;
     padding: 50px;
+    height: auto;
+    overflow-x: hidden;
   
   }
   
@@ -245,14 +251,71 @@ body {
     width: 30%;
     margin-top: 20px;
   }
+  .switch {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    margin-left: -80%;
+    height: 34px;
+  }
+  
+  .switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+    
+  }
+  
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #2196F3;
+    -webkit-transition: .4s;
+    transition: .4s;
+    border-radius: 34px;
+  }
+  
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+  }
+  
+ 
+  
+  input:checked + .slider {
+    background-color: #ccc;
+  }
+  
+  input:focus + .slider {
+    box-shadow: 0 0 1px #ccc;
+  }
+  
+  input:checked + .slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+  }
+  
 }
 /* Estilos adicionais para telas maiores (não móveis) */
 @media screen and (min-width: 769px) {
-    
+  
 /* Estilos para os inputs do formulário de cadastro */
 .cadastroInput {
   width: 100%;
-  margin: 10px 0;
+  margin-right: 50%;
+  margin: auto;
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 4px;
@@ -274,6 +337,8 @@ body {
   border-radius: 4px;
   cursor: pointer;
   font-size: 16px;
+  margin-top: 10px;
+  width: 100%;
 }
 
 .EnviarCadastro:hover {
@@ -290,16 +355,42 @@ body {
 .cadastro-status.error {
   color: #f44336; /* Vermelho */
 }
-
+.DivTabela {
+  border-radius: 25px;
+  max-height: 70vh; /* Defina a altura máxima desejada para a tabela */
+  width: 98%;
+  overflow: auto; /* Adiciona barras de rolagem se necessário */
+  font-size: 12px;
+  margin: auto;
+  background-color: #dae1f1;
+  margin-left: 55px; /* Alterado para porcentagem para melhor adaptação em telas menores */
+  align-items: center;
+  padding: 50px;
+  height: auto;
+  overflow-x: hidden;
+}
 /* Estilos para a tabela de resultados */
 .Tabela {
+  padding: 10px;
+  font-size: 12px;
+  margin: auto;
   width: 100%;
-  border-collapse: collapse;
+}
 
+.FormTable {
+  margin-left: 45%;
+  margin: auto;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: auto;
+  padding: 80px;
 }
 
 .Tabela th, .Tabela td {
-  border: 1px solid #ddd;
+  border: 0.5px solid #a2b7e7;
   padding: 8px;
   text-align: left;
 }
@@ -312,7 +403,6 @@ body {
 .Tabela tr:hover {
   background-color: #f5f5f5;
 }
-
 /* Estilos para o ícone na tabela */
 .IconeTabela {
   width: 20px;
@@ -346,14 +436,14 @@ body {
 
 /* Estilos para o formulário de entrada */
 .FormInput {
-  margin-left: 5%; /* Alterado para porcentagem para melhor adaptação em telas menores */
-  width: 90%;
+  margin-left: 25%; /* Alterado para porcentagem para melhor adaptação em telas menores */
+  width: 60%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   height: auto;
-  padding: 30px;
+  padding: 80px;
 }
 
 /* Estilos para o modal */

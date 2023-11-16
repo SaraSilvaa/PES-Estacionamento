@@ -73,6 +73,8 @@ export const Cadastro = () => {
     const diffMinutes = diffMilliseconds / (1000 * 60);
     return diffMinutes;
   };
+// Adicione um ouvinte de evento para o change do input do slider
+
 
   const calcularValor = (duracao) => {
     // Assuming a fixed rate per hour, adjust the rate as needed
@@ -171,20 +173,20 @@ export const Cadastro = () => {
 {page === 'Pesquisar' && (
   
   <div className='FormTable'>
+
+
+
+
+
 <label className="switch">
   <input type="checkbox" className={`FiltroAtivo ${filtroAtivo ? 'ligado' : 'desligado'}`} onClick={handleFiltroClick} />
   
-  <span className="slider round"></span>
-  <span className="textoFixo">{filtroAtivo ? 'Ativo' : 'Finalizado'}</span>
+  <span id="mySlider" className="slider round"></span>
+ 
 
-
-</label>
-
-
-
-
-
-
+ </label>
+<div className='DivTabela'>
+  
     <table className='Tabela'>
       <thead>
         <tr>
@@ -224,6 +226,7 @@ export const Cadastro = () => {
         ))}
       </tbody>
     </table>
+    </div>
   </div>
 )}
 

@@ -47,7 +47,6 @@ export const Cadastro = () => {
   
     try {
       const horaSaida = getHoraAtual();
-      const valorFinal = parseFloat(valor);
   
       const selectedItemData = contato.find((item) => item._id === id);
       console.log('Contato DPS do find:', selectedItemData);

@@ -82,7 +82,7 @@ body {
   }
   .modal-content {
     background-color: #fefefe;
-    margin: 10% auto; /* Ajuste para o centro da tela */
+    margin: 10% auto; 
     padding: 20px;
     border: 1px solid #888;
     width: 90%;
@@ -97,7 +97,7 @@ body {
     box-sizing: border-box;
   }
   
-  /* Espaçamento entre os inputs */
+
   .cadastroInput + .cadastroInput {
     margin-top: 10px;
   }
@@ -142,7 +142,7 @@ body {
     height: 60%;
   }
   .FormTable{
-    margin-left: 55px; /* Alterado para porcentagem para melhor adaptação em telas menores */
+    margin-left: 55px; 
     width: 70%;
     margin: auto;
     display: flex;
@@ -156,7 +156,7 @@ body {
   }
   
   .modal-content .card {
-    position: relative; /* Permite posicionar elementos filhos relativos a este cartão */
+    position: relative; 
     background-color: #0d2a69;
     padding: 20px;
     margin-top: 20px;
@@ -169,15 +169,15 @@ body {
     box-sizing: border-box;
   }
   
-  /* Estilos para a bola centralizada acima do card */
+  
   .modal-content .card .bola {
     position: absolute;
-    top: -20px; /* Posiciona a bola acima do card */
-    left: 50%; /* Centraliza horizontalmente */
-    transform: translateX(-50%); /* Ajusta para centralizar corretamente */
+    top: -20px; 
+    left: 50%; 
+    transform: translateX(-50%); 
   }
   
-  /* Estilos para o círculo branco */
+
   .modal-content .card .bola .circulo {
     background-color: #0d2a69;
     width: 60px;
@@ -189,13 +189,12 @@ body {
     margin: auto;
   }
   
-  /* Estilos para a imagem dentro do círculo */
+ 
   .modal-content .card .bola .circulo img {
-    width: 80%; /* Ajuste a largura conforme necessário */
-    height: auto; /* Mantém a proporção original */
+    width: 80%; 
+    height: auto; 
   }
   
-  /* Estilos para o input dentro do cartão */
   .modal-content .card input {
     width: 100%;
     padding: 10px;
@@ -207,7 +206,6 @@ body {
     padding: 10px;
   }
   
-  /* Estilos para os botões dentro do cartão */
   .modal-content .card button {
     background-color: #4caf50;
     color: #fff;
@@ -232,15 +230,13 @@ body {
     border-radius: 4px;
     cursor: pointer;
     margin-right: 10px;
-    flex: 1; /* Ocupa todo o espaço disponível */
+    flex: 1;
   }
   
-  /* Altere a cor do botão "Finalizar" quando hover, se desejar */
   .modal-content .card button.finalizar:hover {
     background-color: #45a049;
   }
   
-  /* Altere a cor do botão "Cancelar" quando hover, se desejar */
   .modal-content .card button.cancelar:hover {
     background-color: #e74c3c;
   }
@@ -255,11 +251,10 @@ body {
     border-radius: 18px;
     width: 70%;
     align-items: center;
-    margin: 0 auto; /* Centraliza horizontalmente */
+    margin: 0 auto; 
     margin-top: 6%;
     z-index: 99999;
   
-    /* Outros estilos, se necessário */
   }
   .carroimg{
     width: 30%;
@@ -322,7 +317,7 @@ body {
   }
   .DivTabela {
     border-radius: 25px;
-    max-height: 65vh; /* Defina a altura máxima desejada para a tabela */
+    max-height: 65vh; 
     width: 250%;
     background-color: #dae1f1;
     border-radius: 25px;
@@ -330,9 +325,9 @@ body {
   }
   .dashboard {
     border-radius: 25px;
-    max-height: 100vh; /* Defina a altura máxima desejada para a tabela */
+    max-height: 100vh; 
     width: auto;
-    overflow: auto; /* Adiciona barras de rolagem se necessário */
+    overflow: auto; 
     font-size: 8px;
     margin: auto;
     background-color: #dae1f1;
@@ -365,10 +360,9 @@ body {
   }
   
 }
-/* Estilos adicionais para telas maiores (não móveis) */
+/* Medidas para pc ou monitor */
 @media screen and (min-width: 769px) {
   
-/* Estilos para os inputs do formulário de cadastro */
 .cadastroInput {
   width: 100%;
   margin-right: 50%;
@@ -380,12 +374,10 @@ body {
 
 }
 
-/* Espaçamento entre os inputs */
 .cadastroInput + .cadastroInput {
   margin-top: 10px;
 }
 
-/* Estilos para o botão de cadastrar */
 .EnviarCadastro {
   background-color: #4c6baf;
   color: white;
@@ -416,31 +408,29 @@ body {
 .Finalizar:hover {
   background-color: rgb(149, 193, 230);
 }
-/* Estilos para a mensagem de status do cadastro */
 .cadastro-status {
   margin-top: 10px;
   font-size: 16px;
-  color: #4caf50; /* Verde */
+  color: #4caf50;
 }
 
 .cadastro-status.error {
-  color: #f44336; /* Vermelho */
+  color: #f44336; 
 }
 .DivTabela {
   border-radius: 25px;
-  max-height: 70vh; /* Defina a altura máxima desejada para a tabela */
+  max-height: 70vh; 
   width: 98%;
-  overflow: auto; /* Adiciona barras de rolagem se necessário */
+  overflow: auto; 
   font-size: 12px;
   margin: auto;
   background-color: #dae1f1;
-  margin-left: 55px; /* Alterado para porcentagem para melhor adaptação em telas menores */
+  margin-left: 55px; 
   align-items: center;
   padding: 50px;
   height: auto;
   overflow-x: hidden;
 }
-/* Estilos para a tabela de resultados */
 .Tabela {
   padding: 10px;
   font-size: 10px;
@@ -474,7 +464,6 @@ body {
 .Tabela tr:hover {
   background-color: #f5f5f5;
 }
-/* Estilos para o ícone na tabela */
 .IconeTabela {
   width: 20px;
   height: 20px;
@@ -505,9 +494,9 @@ body {
 
 }
 
-/* Estilos para o formulário de entrada */
+
 .FormInput {
-  margin-left: 25%; /* Alterado para porcentagem para melhor adaptação em telas menores */
+  margin-left: 25%; 
   width: 60%;
   display: flex;
   flex-direction: column;
@@ -540,7 +529,7 @@ body {
   height: 60%;
 }
 .FormTable{
-  margin-left: 55px; /* Alterado para porcentagem para melhor adaptação em telas menores */
+  margin-left: 55px; 
   width: 70%;
   margin: auto;
   display: flex;
@@ -552,7 +541,7 @@ body {
 }
 
 .modal-content .card {
-  position: relative; /* Permite posicionar elementos filhos relativos a este cartão */
+  position: relative; 
   background-color: #0d2a69;
   padding: 20px;
   margin-top: 20px;
@@ -573,7 +562,6 @@ body {
   transform: translateX(-50%); 
 }
 
-/* Estilos para o círculo branco */
 .modal-content .card .bola .circulo {
   background-color: #0d2a69;
   width: 60px;
@@ -706,14 +694,13 @@ input:checked + .slider:before {
 .dashboard {
  
   border-radius: 25px;
-  max-height: 100vh; /* Defina a altura máxima desejada para a tabela */
+  max-height: 100vh; 
   width: 78%;
-  overflow: auto; /* Adiciona barras de rolagem se necessário */
+  overflow: auto; 
   font-size: 12px;
   margin: auto;
   background-color: #dae1f1;
-  margin-left: 15%; /* Alterado para porcentagem para melhor adaptação em telas menores */
-  align-items: center;
+  margin-left: 15%; 
   padding: 50px;
   height: auto;
   overflow-x: hidden;
@@ -733,7 +720,7 @@ input:checked + .slider:before {
 
 .valor {
   font-weight: bold;
-  color: #007bff; /* cor azul, você pode ajustar conforme necessário */
+  color: #007bff; 
 }
 
 .dashboard-content {
@@ -759,7 +746,6 @@ input:checked + .slider:before {
   background-color: #f0f0f0;
 }
 
-/* Adicione outros estilos conforme necessário */
 
   
 }

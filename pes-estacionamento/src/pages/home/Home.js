@@ -112,7 +112,7 @@ export const Cadastro = () => {
   
     if (isNaN(entradaHora) || isNaN(saidaHora)) {
       console.error('Erro ao calcular a duração: valores inválidos.');
-      return 0; // ou outra lógica apropriada para valores inválidos
+      return 0; 
     }
   
     const diffMilliseconds = saidaHora - entradaHora;
@@ -138,7 +138,6 @@ export const Cadastro = () => {
     return `${formatadoHoras}:${formatadoMinutos}`;
   };
   const calcularTotalFaturado = () => {
-  // Lógica para calcular o total faturado com base nos dados de contato
   let totalFaturado = 0;
 
   contato.forEach((item) => {
@@ -286,6 +285,9 @@ export const Cadastro = () => {
                   <th>Data</th>
                   <th>Hora Entrada</th>
                   <th>Status</th>
+                  <th>Hora Saída</th>
+                  <th>Valor a pagar</th>
+
                   {switchStatus && <th>Finalizar estadia</th>}
                 </tr>
               </thead>
@@ -314,23 +316,22 @@ export const Cadastro = () => {
         {contato.status}
       </td>
       {contato.status.toLowerCase() === 'a finalizar' ? (
-  <>
-    <td>{`R$ ${calcularValor(calcularDuracao(contato.tempoEntrada, getHoraAtual()))}`}</td>
-    <td>{contato.tempoSaida}</td>
-  </>
-) : contato.status.toLowerCase() !== 'finalizado' && (
-  <>
-    <td>
-      <button
-        className="Finalizar"
-        onClick={() => openModal(contato._id)}
-      >
-        Finalizar
-      </button>
-    </td>
-  </>
-
-
+        <>
+          <td>{contato.tempoSaida}</td>
+          <td>{`R$ ${calcularValor(calcularDuracao(contato.tempoEntrada, getHoraAtual()))}`}</td>
+        </>
+      ) : contato.status.toLowerCase() !== 'finalizado' && (
+        <>
+          <td colSpan="2"></td>
+          <td>
+            <button
+              className="Finalizar"
+              onClick={() => openModal(contato._id)}
+            >
+              Finalizar
+            </button>
+          </td>
+        </>
       )}
     </tr>
   ))}
@@ -356,9 +357,9 @@ export const Cadastro = () => {
       <table className="relatorio">
         <thead>
           <tr>
+            <th>Placa</th>
             <th>Data</th>
-            <th>Total Faturado</th>
-            {/* Outras colunas do relatório */}
+            <th>Valor Pago</th>
           </tr>
         </thead>
         <tbody>
@@ -366,9 +367,10 @@ export const Cadastro = () => {
             .filter((item) => item.status.toLowerCase() === 'finalizado')
             .map((item, index) => (
               <tr key={index}>
+                <td>{item.placa}</td>
                 <td>{item.data}</td>
                 <td>{`R$ ${item.valor}`}</td>
-                {/* Outras colunas do relatório */}
+               
               </tr>
             ))}
         </tbody>

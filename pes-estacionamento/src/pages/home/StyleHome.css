@@ -328,6 +328,42 @@ body {
     border-radius: 25px;
     overflow-x: hidden;
   }
+  .dashboard {
+    border-radius: 25px;
+    max-height: 100vh; /* Defina a altura máxima desejada para a tabela */
+    width: auto;
+    overflow: auto; /* Adiciona barras de rolagem se necessário */
+    font-size: 8px;
+    margin: auto;
+    background-color: #dae1f1;
+    align-items: center;
+    padding: 50px;
+    height: auto;
+    overflow-x: hidden;
+  }
+  
+  .dashboard-header {
+    background-color: #f0f0f0;
+    border-radius: 8px;
+    margin-bottom: 20px;
+  }
+  
+  .resumo {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .valor {
+    font-weight: bold;
+    color: #003006; 
+  }
+  
+  .dashboard-content {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
 }
 /* Estilos adicionais para telas maiores (não móveis) */
 @media screen and (min-width: 769px) {
@@ -667,7 +703,64 @@ input:checked + .slider:before {
   transform: translateX(26px);
 }
 
-  
+.dashboard {
+ 
+  border-radius: 25px;
+  max-height: 100vh; /* Defina a altura máxima desejada para a tabela */
+  width: 78%;
+  overflow: auto; /* Adiciona barras de rolagem se necessário */
+  font-size: 12px;
+  margin: auto;
+  background-color: #dae1f1;
+  margin-left: 15%; /* Alterado para porcentagem para melhor adaptação em telas menores */
+  align-items: center;
+  padding: 50px;
+  height: auto;
+  overflow-x: hidden;
+}
+
+.dashboard-header {
+  background-color: #f0f0f0;
+  padding: 15px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+.resumo {
+  display: flex;
+  justify-content: space-between;
+}
+
+.valor {
+  font-weight: bold;
+  color: #007bff; /* cor azul, você pode ajustar conforme necessário */
+}
+
+.dashboard-content {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.relatorio {
+  width: 100%;
+  margin-top: 20px;
+  border-collapse: collapse;
+}
+
+.relatorio th, .relatorio td {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+  text-align: left;
+}
+
+.relatorio th {
+  background-color: #f0f0f0;
+}
+
+/* Adicione outros estilos conforme necessário */
+
   
 }
 

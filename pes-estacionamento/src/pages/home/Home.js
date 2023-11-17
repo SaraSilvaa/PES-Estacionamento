@@ -13,7 +13,7 @@ export const Cadastro = () => {
   const [cpfcnpj, setCpfCnpj] = useState('');
   const [cadastroStatus, setCadastroStatus] = useState(null);
   const [contato, setContatos] = useState([]);
-  const [valor, setValor] = useState(null);
+  const [valor, setValor] = useState('');
   const [selectedItem, setSelectedItem] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [filtroAtivo, setFiltroAtivo] = useState(true);

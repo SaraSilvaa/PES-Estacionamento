@@ -341,8 +341,6 @@ export const Cadastro = () => {
         </div>
       )}
 
-
-
 {page === 'Faturar' && (
   <div className="dashboard">
     <div className="dashboard-header">

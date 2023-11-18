@@ -11,6 +11,8 @@ export const Cadastro = () => {
   const [tipoAutomovel, setTipo] = useState('');
   const [placa, setPlaca] = useState('');
   const [cpfcnpj, setCpfCnpj] = useState('');
+  const [tempoSaida, settemposaida] = useState('');
+
   const [cadastroStatus, setCadastroStatus] = useState(null);
   const [contato, setContatos] = useState([]);
   const [valor, setValor] = useState('');
@@ -181,6 +183,7 @@ export const Cadastro = () => {
           cpfcnpj,
           status: 'Ativo',
           tempoEntrada: getHoraAtual(),
+          tempoSaida,
           valor,
           data: getDataAtual(),
         }
@@ -318,7 +321,7 @@ export const Cadastro = () => {
       {contato.status.toLowerCase() === 'a finalizar' ? (
         <>
           <td>{contato.tempoSaida}</td>
-          <td>{`R$ ${calcularValor(calcularDuracao(contato.tempoEntrada, getHoraAtual()))}`}</td>
+          <td>{contato.valor}</td>
         </>
       ) : contato.status.toLowerCase() !== 'finalizado' && (
         <>

@@ -34,8 +34,20 @@
   background-color: #011a50;
   color: #ecedf8;
 }
+.btnsair{
+  background-color: #c6d2eb;
+  color: #011a50;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 9px;
+  margin-left: 35%;
+  width: 100%;
+  margin: 0;
+  margin-top: 100%;
+  
+}
 
-/* Estilos para a barra lateral em telas menores (móveis) */
+/* Estilo do sidebar em telas menores (móveis) */
 @media screen and (max-width: 768px) {
   .sidebar {
     width: 100%;
@@ -45,11 +57,19 @@
   }
 
   .sidebar-logo {
-    display: none; /* Oculta a logo em telas menores */
+    display: none;
   }
 
   .menu li {
-    text-align: left; /* Ajusta o alinhamento do texto para a esquerda */
-    padding-left: 20px; /* Adiciona um recuo ao texto para melhorar a legibilidade */
+    text-align: left; 
+    padding-left: 20px; 
+  }
+  .btnsair{
+    background-color: #4c6baf;
+    color: white;
+    border-radius: 4px;
+    font-size: 9px;
+    width: 100%;
+    margin: 0;
   }
 }

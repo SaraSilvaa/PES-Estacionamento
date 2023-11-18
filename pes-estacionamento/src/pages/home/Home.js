@@ -11,7 +11,7 @@ export const Cadastro = () => {
   const [tipoAutomovel, setTipo] = useState('');
   const [placa, setPlaca] = useState('');
   const [cpfcnpj, setCpfCnpj] = useState('');
-  const [tempoSaida, settemposaida] = useState('');
+  const [tempoSaida] = useState('');
 
   const [cadastroStatus, setCadastroStatus] = useState(null);
   const [contato, setContatos] = useState([]);
@@ -23,13 +23,13 @@ export const Cadastro = () => {
 
   const updateAutomovel = async (id, data) => {
     try {
-      const response = await axios.put(`https://web-nf32wtl2j0zn.up-de-fra1-1.apps.run-on-seenode.com/automovel/${id}`, data);
-      console.log(response.data);
+        const response = await axios.put(`https://web-nf32wtl2j0zn.up-de-fra1-1.apps.run-on-seenode.com/automovel/${id}`, data);
+        console.log(response.data);
     } catch (error) {
-      console.error('Error:', error);
-      console.log('Response:', error.response ? error.response.data : null);
+        console.error('Error updating automovel:', error);
+        console.log('Response:', error.response ? error.response.data : null);
     }
-  };
+};
 
   const getDataAtual = () => {
     return format(new Date(), 'dd-MM-yyyy');
@@ -48,8 +48,9 @@ export const Cadastro = () => {
     console.log('Finalizar registro com o ID:', id);
   
     try {
-      const horaSaida = getHoraAtual();
-  
+      const horaSaida = await getHoraAtual();
+      console.log('Hora de Saída:', horaSaida);
+        
       const selectedItemData = contato.find((item) => item._id === id);
       console.log('Contato DPS do find:', selectedItemData);
   
@@ -66,7 +67,7 @@ export const Cadastro = () => {
   
       const updateFields = {
         valor: calcularValor(duracao),
-        horaSaida,
+        horaSaida: horaSaida, // Now you should have the correct exit time
         status: 'A Finalizar',
       };
   
@@ -78,8 +79,7 @@ export const Cadastro = () => {
     } catch (error) {
       handleErroFinalizarRegistro(error);
     }
-  };
-  
+};
 
   const handleErroFinalizarRegistro = (error) => {
     console.error('Erro ao finalizar registro:', error);
@@ -110,11 +110,16 @@ export const Cadastro = () => {
   };
   const calcularDuracao = (entrada, saida) => {
     const entradaHora = new Date(`01/01/2000 ${entrada}`);
-    const saidaHora = new Date(`01/01/2000 ${saida}`);
-  
+    let saidaHora = new Date(`01/01/2000 ${saida}`);
+    
     if (isNaN(entradaHora) || isNaN(saidaHora)) {
       console.error('Erro ao calcular a duração: valores inválidos.');
       return 0; 
+    }
+  
+    // If the exit time is earlier than the entry time, add 24 hours to the exit time
+    if (saidaHora < entradaHora) {
+      saidaHora = new Date(saidaHora.getTime() + 24 * 60 * 60 * 1000);
     }
   
     const diffMilliseconds = saidaHora - entradaHora;
@@ -122,9 +127,8 @@ export const Cadastro = () => {
     return diffMinutes;
   };
   
-
   const calcularValor = (duracao) => {
-    const taxaHora = 5;
+    const taxaHora = 10;
     const valor = duracao * (taxaHora / 60);
     return valor.toFixed(2);
   };
@@ -289,7 +293,7 @@ export const Cadastro = () => {
                   <th>Hora Entrada</th>
                   <th>Status</th>
                   <th>Hora Saída</th>
-                  <th>Valor a pagar</th>
+                  <th>Valor a pagar / pago</th>
 
                   {switchStatus && <th>Finalizar estadia</th>}
                 </tr>
@@ -318,7 +322,7 @@ export const Cadastro = () => {
         ) : null}
         {contato.status}
       </td>
-      {contato.status.toLowerCase() === 'a finalizar' ? (
+      {contato.status.toLowerCase() === 'a finalizar'? (
         <>
           <td>{contato.tempoSaida}</td>
           <td>{contato.valor}</td>

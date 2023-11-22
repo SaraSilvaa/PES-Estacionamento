@@ -50,7 +50,7 @@ export const Cadastro = () => {
     try {
       const horaSaida = await getHoraAtual();
       console.log('Hora de Saída:', horaSaida);
-        
+  
       const selectedItemData = contato.find((item) => item._id === id);
       console.log('Contato DPS do find:', selectedItemData);
   
@@ -64,12 +64,15 @@ export const Cadastro = () => {
         selectedItemData.tempoEntrada,
         horaSaida
       );
+      console.log('Duração:', duracao);
   
       const updateFields = {
         valor: calcularValor(duracao),
-        horaSaida: horaSaida, // Now you should have the correct exit time
+        tempoSaida: horaSaida, // Now you should have the correct exit time
         status: 'A Finalizar',
       };
+  
+      console.log('Update Fields:', updateFields);
   
       await updateAutomovel(id, updateFields);
   
@@ -79,8 +82,9 @@ export const Cadastro = () => {
     } catch (error) {
       handleErroFinalizarRegistro(error);
     }
-};
-
+  };
+  
+  
   const handleErroFinalizarRegistro = (error) => {
     console.error('Erro ao finalizar registro:', error);
     console.log('Response:', error.response ? error.response.data : null);
@@ -213,62 +217,64 @@ export const Cadastro = () => {
   return (
     <div className="body">
 <SidebarMenu changePage={setPage} />
+{page === 'Cadastrar' && (
+  <div className="DivCadastro">
+    <div className="FormInput">
+      <form onSubmit={handleSubmit}>
+        <label className='labelInput' style={{ color: 'white' }}>
+          Modelo:
+          <input
+            className="cadastroInput"
+            type="text"
+            value={tipoAutomovel}
+            onChange={(e) => setTipo(e.target.value)}
+          />
+        </label>
+        <label className='labelInput' style={{ color: 'white' }}>
+          Placa:
+          <input
+            className="cadastroInput"
+            type="text"
+            value={placa}
+            onChange={(e) => setPlaca(e.target.value)}
+          />
+        </label>
+        <label className='labelInput' style={{ color: 'white' }}>
+          CPF/CNPJ:
+          <input
+            className="cadastroInput"
+            type="text"
+            value={cpfcnpj}
+            onChange={(e) => setCpfCnpj(e.target.value)}
+          />
+        </label>
+        <label className='labelInput' style={{ color: 'white' }}>
+          Data:
+          <input
+            className="cadastroInput"
+            type="text"
+            value={getDataAtual()}
+            readOnly
+          />
+        </label>
+        <label className='labelInput' style={{ color: 'white' }}>
+          Hora de Entrada:
+          <input
+            className="cadastroInput"
+            type="text"
+            value={getHoraAtual()}
+            readOnly
+          />
+        </label>
+        <button className="EnviarCadastro" type="submit">
+          Cadastrar
+        </button>
+      </form>
+      {cadastroStatus && <p>{cadastroStatus}</p>}
+    </div>
+  </div>
+)}
 
-      {page === 'Cadastrar' && (
-        <div className="FormInput">
-          <form onSubmit={handleSubmit}>
-            <label>
-              Modelo:
-              <input
-                className="cadastroInput"
-                type="text"
-                value={tipoAutomovel}
-                onChange={(e) => setTipo(e.target.value)}
-              />
-            </label>
-            <label>
-              Placa:
-              <input
-                className="cadastroInput"
-                type="text"
-                value={placa}
-                onChange={(e) => setPlaca(e.target.value)}
-              />
-            </label>
-            <label>
-              CPF/CNPJ:
-              <input
-                className="cadastroInput"
-                type="text"
-                value={cpfcnpj}
-                onChange={(e) => setCpfCnpj(e.target.value)}
-              />
-            </label>
-            <label>
-              Data:
-              <input
-                className="cadastroInput"
-                type="text"
-                value={getDataAtual()}
-                readOnly
-              />
-            </label>
-            <label>
-              Hora de Entrada:
-              <input
-                className="cadastroInput"
-                type="text"
-                value={getHoraAtual()}
-                readOnly
-              />
-            </label>
-            <button className="EnviarCadastro" type="submit">
-              Cadastrar
-            </button>
-          </form>
-          {cadastroStatus && <p>{cadastroStatus}</p>}
-        </div>
-      )}
 
       {page === 'Pesquisar' && (
         <div className="FormTable">
@@ -284,20 +290,23 @@ export const Cadastro = () => {
           </label>
           <div className="DivTabela">
             <table className="Tabela">
-              <thead>
-                <tr>
-                  <th>Tipo</th>
-                  <th>Placa</th>
-                  <th>CPF/CNPJ</th>
-                  <th>Data</th>
-                  <th>Hora Entrada</th>
-                  <th>Status</th>
-                  <th>Hora Saída</th>
-                  <th>Valor a pagar / pago</th>
+            <thead>
+  <tr>
+    <th>Tipo</th>
+    <th>Placa</th>
+    <th>CPF/CNPJ</th>
+    <th>Data</th>
+    <th>Hora Entrada</th>
+    <th>Status</th>
+    {!switchStatus && filtroAtivo && <th>Hora Saída</th>}
+    {!switchStatus && filtroAtivo && <th>Valor a pagar / pago</th>}
 
-                  {switchStatus && <th>Finalizar estadia</th>}
-                </tr>
-              </thead>
+    {switchStatus && <th>Finalizar estadia</th>}
+    {!switchStatus && <th> Hora Saída</th>}
+    {!switchStatus && <th> Valor pago / A pagar</th>}
+  </tr>
+</thead>
+
               <tbody>
               {contato
   ?.filter((contato) =>
@@ -329,7 +338,6 @@ export const Cadastro = () => {
         </>
       ) : contato.status.toLowerCase() !== 'finalizado' && (
         <>
-          <td colSpan="2"></td>
           <td>
             <button
               className="Finalizar"

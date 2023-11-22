@@ -1,9 +1,9 @@
 /* Remova a margem padrão do corpo */
 body {
   margin: 0;
-
+  padding: 0;
+ 
 }
-
 /* Adicione regras de mídia para telas menores */
 @media screen and (max-width: 768px) {
   *, .FormInput {
@@ -95,8 +95,11 @@ body {
     border: 1px solid #ccc;
     border-radius: 4px;
     box-sizing: border-box;
+
   }
-  
+  Label{
+    color: #ffffff;
+  }
 
   .cadastroInput + .cadastroInput {
     margin-top: 10px;
@@ -325,15 +328,11 @@ body {
   }
   .dashboard {
     border-radius: 25px;
-    max-height: 100vh; 
     width: auto;
-    overflow: auto; 
+    overflow: auto;
     font-size: 8px;
-    margin: auto;
     background-color: #dae1f1;
-    align-items: center;
     padding: 50px;
-    height: auto;
     overflow-x: hidden;
   }
   
@@ -376,6 +375,7 @@ body {
 
 .cadastroInput + .cadastroInput {
   margin-top: 10px;
+  
 }
 
 .EnviarCadastro {
@@ -695,13 +695,13 @@ input:checked + .slider:before {
  
   border-radius: 25px;
   max-height: 100vh; 
-  width: 78%;
+  width: 85vh;
   overflow: auto; 
   font-size: 12px;
   margin: auto;
   background-color: #dae1f1;
-  margin-left: 15%; 
-  padding: 50px;
+  margin-left: 35%; 
+  padding: 2%;
   height: auto;
   overflow-x: hidden;
 }

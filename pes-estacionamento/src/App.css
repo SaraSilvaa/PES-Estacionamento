@@ -3,8 +3,9 @@
 }
 
 .App {
+  
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  background-color: #ffffff;
+  background-color: rgba(226, 123, 123, 0);
 }

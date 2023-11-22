@@ -1,4 +1,17 @@
 
+
+
+
+
+body {
+  margin: 0;
+  padding: 0;
+  background-size: cover;
+  height: 100vh;
+  background: url('../../img/fundo.png') no-repeat center center fixed;
+  overflow: hidden;
+}
+
 /*telas nao mobile*/
 @media screen and (min-width: 769px) {
   .container {
@@ -7,7 +20,7 @@
     margin-top: 10%;
     width: 70%;
     height: auto;
-    background-color: #005c9e;
+    background-color: #005c9ea1;
     border-radius: 8px;
     box-shadow: 10 10 10px rgba(0, 0, 0, 0.1);
   }
